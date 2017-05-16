@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>C-Judge</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="stylesheets/default_multifile.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1>C-Judge</h1>
+		<p>C/C++ program evaluator</p>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="/">Homee</a></li>
+			<li><a href="/testCases">Multiple Test Cases</a></li>
+			<li class="current_page_item"><a href="/multiCompiler">Multiple-file program</a></li>
+			<li><a href="/bulkCompiler">Multiple source programs</a></li>
+			
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<form id="bulkCompiler" name="bulkCompiler" method="post" action="compileMultiCode" enctype="multipart/form-data" >
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Code Upload</h1>
+			</div>
+			<div class="entry"> 
+				<center><h3> Upload source code file : <input type="file" name="mainfile"  multiple />  </h3> </center>
+				
+			</div>
+			<div class="btm">
+				<div class="l">
+					<div class="r">
+						<p class="meta"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		
+		<div class="two-columns">
+			<div class="columnA">
+				<div class="title red">
+					<h2>Input</h2>
+				</div>
+				<div class="content">
+					<div id="input" name="input" ><center>
+						
+						<h3>Upload input file : </h3>
+						<input type="file" name="inputfile"  />
+					</center></div>
+				</div>
+			</div>
+			
+			<div class="columnB">
+				<div class="title blue">
+					<h2> Expected Output</h2>
+				</div>
+				<div class="content"><center>
+						
+						<h3>Upload expected output file : </h3>
+						<input type="file" name="outputfile"  />
+				</center></div>
+			</div>
+			<div class="btm">&nbsp;</div>
+			
+		</div>
+		
+		<br>
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Result</h1>
+			</div>
+			<div class="entry"> 
+				</center>
+					<fieldset  class="f2">
+						<legend>Results : </legend>
+						<table >
+							<tr>
+						
+							<th width="20%" style = " border: 2px solid #ccc;" >Output</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Expected Output</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Status</th>
+							</tr>
+							<% if (status == 'FAIL'){  
+							%>	    	
+							<tr>
+							
+								<td align="center" style = " border: 2px solid #ccc;"><%= output %></td>
+								<td align="center" style = " border: 2px solid #ccc;"><%= exp_out %></td>
+								<td align="center" bgcolor="#FF0000" style = " border: 2px solid #ccc;"><%= status %></td>
+							<%}else{ %>
+								<td align="center" style = " border: 2px solid #ccc;"><%= output %></td>
+								<td align="center" style = " border: 2px solid #ccc;"><%= exp_out %></td>
+								<td align="center" bgcolor="#00FF00" style = "color:green border: 2px solid #ccc; "><%= status %></td>
+							</tr>
+	    	
+								<% } %>
+						</table>
+	    			</fieldset>
+	    		</center>	
+			</div>
+			<div class="btm">
+				<div class="l">
+					<div class="r">
+						<p class="meta"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li id="options">
+				<h2>Options</h2>
+				<ul>
+					
+					<li>Language : <select name="lang">
+	  					<option value="C">C</option>
+	  					<option value="C++">C++</option>
+	  					</select>
+	  				</li>
+	  				
+	  				<li>Compile With Input : 
+						<input type="radio" name="inputRadio" id="inputRadio" value="true"  checked="checked" onclick="input.disabled=false"/>yes
+						<input type="radio" name="inputRadio" id="inputRadio" value="false" onclick="input.disabled=true"/>No
+					</li>	
+					
+					<li>
+						Compare with Expected Output: <br>
+						<input type="radio" name="compareRadio" id="compareRadio" value="true" checked="checked" onclick="expectedOutput.enabled=true"/>yes
+						<input type="radio" name="compareRadio" id="compareRadio" value="false"  onclick="expectedOutput.disabled=true"/>No
+						
+					</li>
+				</ul>
+			</li>
+			
+			<li>
+				<h2>Compile & Execute</h2>
+				<ul>
+					<li><center><input type="submit" value="Compile&Execute"  name="submit" /></center></li>
+					
+				</ul>
+			</li>
+			
+			
+		</ul>
+			
+	</div>
+	<!-- end sidebar -->
+	
+</div>
+</form>
+<!-- end page -->
+<div style="clear: both;">&nbsp;</div>
+<div id="footer">
+	<p>&copy;2017 All Rights Reserved. &nbsp;&bull;&nbsp; C-Judge</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+
+<html>
+<head>
+
+<title>C-Judge</title>
+<style>
+
+</style>
+<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1>C-Judge</h1>
+		<p>C/C++ program evaluator</p>
+	</div>
+	<div id="menu">
+		<ul>
+			<form id="bulkCompiler" name="bulkCompiler" method="post" action="bulkCompiler" enctype="multipart/form-data" >
+			<li class="current_page_item"><a href="#">Home</a></li>
+			<li><a href="/testCases">Multiple Test Cases</a></li>
+			<li><a href="/multiCompiler">Multiple-file program</a></li>
+			<li><a href="/bulkCompiler">Multiple source programs</a></li>
+			</form>
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<form id="myform" name="myform" method="post" action="compilecode" enctype="multipart/form-data">
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Code Editor</h1>
+			</div>
+			<div class="entry"> 
+				<textarea id="code" name="code" ><%= code %></textarea>
+				
+			</div>
+			<div class="btm">
+				<div class="l">
+					<div class="r">
+						<p class="meta"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="two-columns">
+			<div class="columnA">
+				<div class="title red">
+					<h2>Input</h2>
+				</div>
+				<div class="content">
+					<textarea id="input" name="input" ><%= input %></textarea> 
+				</div>
+			</div>
+			<div class="columnC">
+				<div class="title yellow">
+					<h2>Expected Output</h2>
+				</div>
+				<div class="content">
+					<textarea id="expectedOutput" name="expectedOutput" enabled = "false"><%= exOutput %></textarea>
+				</div>
+			</div>
+			<div class="columnB">
+				<div class="title blue">
+					<h2>Output</h2>
+				</div>
+				<div class="content">
+					<textarea id="output" name="output" ><%= output %></textarea> 
+				</div>
+			</div>
+			<div class="btm">&nbsp;</div>
+		</div>
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li id="options">
+				<h2>Options</h2>
+				<ul>
+					<li>Editor<input type="radio" name="codeRadio" id="codeRadio" value="true" checked="checked" onclick="code.disabled=false"/>
+						File Upload<input type="radio" name="codeRadio" id="codeRadio" value="false" onclick="code.disabled=true"/><br>
+					</li>
+					
+					<li>Compare with Expected Output: <br>
+						<input type="radio" name="compareRadio" id="compareRadio" value="true" checked="checked" onclick="expectedOutput.enabled=true"/>Yes
+						<input type="radio" name="compareRadio" id="compareRadio" value="false"  onclick="expectedOutput.disabled=true"/>No
+					</li>
+					
+					<li>Language : <select name="lang">
+	  					<option value="C">C</option>
+	  					<option value="C++">C++</option>
+	  					</select>
+	  				</li>
+	  				
+	  				<li>Compile With Input : 
+						<input type="radio" name="inputRadio" id="inputRadio" value="true"  checked="checked" onclick="input.disabled=false"/>yes
+						<input type="radio" name="inputRadio" id="inputRadio" value="false" onclick="input.disabled=true"/>No
+					</li>	
+				</ul>
+			</li>
+			<li>
+				<h2>File Uploader</h2>
+				<ul>
+					<li>Upload main file :<input type="file" name="mainfile"  multiple /></li>
+					<li>Upload input file : <input type="file" name="inputfile"  /></li>
+				</ul>
+			</li>
+			
+			<li>
+				<h2>Compile & Execute</h2>
+				<ul>
+					<center><input type="submit" value="Compile&Execute" name="submit" /></center>
+					
+				</ul>
+			</li>
+			<li>
+				<h2>Result</h2>
+				<ul>
+				<li>
+				<% if (status == 'FAIL'){ %>
+				Actual output : <%= output %> <br>
+	    		Expected output : <%= exOutput %><br>
+		   		Status : <%= status %>
+		   		<%}else{ %>
+		   		Actual output : <%= output %> <br>
+	    		Expected output : <%= exOutput %> <br>
+		   		Status : <%= status %>
+		   		<%}%>
+		   		</li>
+				</ul>
+			</li>
+			
+		</ul>
+			
+	</div>
+	<!-- end sidebar -->
+	
+</div>
+
+<!-- end page -->
+<div style="clear: both;">&nbsp;</div>
+<div id="footer">
+	<p>&copy;2017 All Rights Reserved. &nbsp;&bull;&nbsp; C-Judge</a></p>
+</div>
+</form>
+</body>
+</html>

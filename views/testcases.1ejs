@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>C-Judge</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="stylesheets/default.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1>C-Judge</h1>
+		<p>C/C++ program evaluator</p>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li class="current_page_item"><a href="/testCases">Multiple Test Cases</a></li>
+			<li><a href="/multiCompiler">Multiple-file program</a></li>
+			<li><a href="/bulkCompiler">Multiple source programs</a></li>
+			
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<form id="testCases" name="testCases" method="post" action="execute" enctype="multipart/form-data" >
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Code Editor</h1>
+			</div>
+			<div class="entry"> 
+				<textarea id="code" name="code" ><%= code %></textarea>
+				
+			</div>
+			<div class="btm">
+				<div class="l">
+					<div class="r">
+						<p class="meta"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Upload Multiple Test Cases</h1>
+			</div>
+			
+		</div>
+		
+		
+		
+	</div>
+	
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li id="options">
+				<h2>Options</h2>
+				<ul>
+					
+					<li>Language : <select name="lang">
+	  					<option value="C">C</option>
+	  					<option value="C++">C++</option>
+	  					</select>
+	  				</li>
+	  				
+	  				<li>Compile With Input : 
+						<input type="radio" name="inputRadio" id="inputRadio" value="true"  checked="checked" onclick="input.disabled=false"/>yes
+						<input type="radio" name="inputRadio" id="inputRadio" value="false" onclick="input.disabled=true"/>No
+					</li>	
+				</ul>
+			</li>
+			
+			<li>
+				<h2>File Uploader</h2>
+				<ul>
+					<li>Editor :<input type="radio" name="codeRadio" id="codeRadio" value="true" checked="checked" onclick="code.disabled=false"/></li>
+					<li>File Upload :<input type="radio" name="codeRadio" id="codeRadio" value="false" onclick="code.disabled=true"/></li>
+					<li>Upload Source Code :<input type="file" name="mainfile"  multiple />
+				</ul>
+			</li>
+			<li>
+				<h2>Compile & Execute</h2>
+				<ul>
+					<li><center><input type="submit" value="Compile&Execute"  name="submit" /></center></li>
+					
+				</ul>
+			</li>
+			<li>
+				<h2>Statistics</h2>
+				<ul>
+					<li><center><div id="piechart" style="width: 280px; height: 200px;"></div></center></li>
+					
+				</ul>
+			</li>
+		</ul>
+			
+	</div>
+	<!-- end sidebar -->
+	
+</div>
+</form>
+<form id="testCases" name="testCases" method="post" action="inputs" enctype="multipart/form-data" >
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div class="two-columns">
+			<div class="columnA">
+				<div class="title red">
+					<h2>Input</h2>
+				</div>
+				<div class="content">
+					<div id="input" name="input" >
+						<input type="file" name="inputfile" value="Input File" required/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="columnB">
+				<div class="title blue">
+					<h2>Expected Output</h2>
+				</div>
+				<div class="content">
+						<input type="file" name="outputfile" value="Output File" required/>
+				</div>
+			</div>
+			<div class="btm">&nbsp;</div>
+			
+		</div>
+		<div class="post bluebox"> 
+			<div class="title">
+				<h1>Submit Test Cases</h1> 	
+				<center><input type="submit" value="Submit Files"  name="submit" /></center>
+			</div>
+			<div class="entry" > 
+				
+			</div>
+			
+		</div>
+		<br>
+		<div class="post greenbox">
+			<div class="title">
+				<h1>Result</h1>
+			</div>
+			<div class="entry2"> 
+				</center>
+					<fieldset  class="f2">
+						<legend>Results : </legend>
+						<table >
+							<tr>
+							<th width="20px" style = " border: 2px solid #ccc;" >TestCase</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Input</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Output</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Expected Output</th>
+							<th width="20%" style = " border: 2px solid #ccc;" >Status</th>
+							</tr>
+							<% status.forEach(function(key) { 
+							%>	    	
+							<tr>
+								<td align="center" style = " border: 2px solid #ccc;"><%= key.name %></td>
+								<td align="center" style = " border: 2px solid #ccc;"><%= key.in %></td>
+								<td align="center" style = " border: 2px solid #ccc;"><%= key.out %></td>
+								<td align="center" style = " border: 2px solid #ccc;"><%= key.exp_out %></td>
+								<%	if (key.stat == 'FAIL'){%>
+								<td align="center" bgcolor="#FF0000" style = " border: 2px solid #ccc;"><%= key.stat %></td>
+								<%}else{ %>
+								<td align="center" bgcolor="#00FF00" style = "color:green border: 2px solid #ccc; "><%= key.stat %></td>
+							</tr>
+	    	
+								<% }}); %>
+						</table>
+	    			</fieldset>
+	    			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    		<script type="text/javascript">
+    	  	google.charts.load('current', {'packages':['corechart']});
+	      	google.charts.setOnLoadCallback(drawChart);
+	
+	      	function drawChart() {
+			var pass= <%=passCount%>;
+			<% console.log(passCount) %>;
+			var fail = <%=failCount%>;
+        	var data = google.visualization.arrayToDataTable([
+          	['Task', 'Hours per Day'],
+          	['PASS',     <%=passCount%>],
+          	['FAIL',     <%=failCount%>],
+	          
+        	]);
+	
+        	var options = {
+          	title: 'PASS/FAIL STATISTICS'
+        	};
+
+        	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+	        chart.draw(data, options);
+      		}
+  			</script>
+	    		</center>	
+			</div>
+			<div class="btm">
+				<div class="l">
+					<div class="r">
+						<p class="meta"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<!-- end page -->
+<div style="clear: both;">&nbsp;</div>
+<div id="footer">
+	<p>&copy;2017 All Rights Reserved. &nbsp;&bull;&nbsp; C-Judge</a></p>
+</div>
+</body>
+</html>

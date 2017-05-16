@@ -1,0 +1,73 @@
+<style type="text/css">
+h1 {
+	color:#008;
+	font-size:35px;
+	font-family: 'Cinzel', serif;
+	font-weight:bold;
+}
+h3 {
+	color:#008;
+	font-size:20px;
+	font-family: 'Cinzel', serif;
+	font-weight:bold;
+}
+textarea{
+	color:#008;
+	height:150px;
+	width :500px;
+}
+body {
+	color:#004;
+	font-size:15px;
+	font-family: 'Cinzel', serif;
+	font-weight:bold;
+}
+header { padding: 500px 100px; color: #fff; font-size :15px; text-align:right;}
+ p {
+	font-size:20px;
+	line-height:25px;
+	font-weight:400;
+}
+fieldset.f1 { 
+    display: block;
+    margin-left: 550px;
+    margin-right: 550px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+}
+fieldset.f2 { 
+    display: block;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+}
+
+fieldset.f3 { 
+    display: block;
+    margin-left: 500px;
+    margin-right: 500px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+}
+
+legend {
+  border:1px solid green;
+}
+ .just
+ {
+    text-align: center; 
+
+ }
+  ul { list-style-type:none; margin:0; padding:0;text-align: right; }
+li { display:inline; }
+</style>

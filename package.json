@@ -1,0 +1,16 @@
+{
+  "name": "CJudge",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "file:node_modules\\body-parser",
+    "chart.js": "^2.5.0",
+    "express": "^3.2.6",
+    "express-fileupload": "^0.1.2",
+    "jade": "^1.11.0",
+    "multer": "file:node_modules\\multer"
+  }
+}
